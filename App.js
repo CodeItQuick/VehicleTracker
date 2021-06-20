@@ -9,8 +9,9 @@
 import React from 'react';
 import type { Node } from 'react';
 import {
-  SafeAreaView,
+  SafeAreaView, // FIXME: I think this is iOS specific
   FlatList,
+  Button,
   StyleSheet,
   Text,
   useColorScheme,
@@ -47,11 +48,17 @@ const App: () => Node = () => {
   return (
     <SafeAreaView style={backgroundStyle}>
       <FlatList
-        testID='entriesList'
+        testID="entriesList"
         data={EMPTY_DATA}
         ListEmptyComponent={listEmptyComponent}
         renderItem={renderItem}
         keyExtractor={item => item.id}
+      />
+      <Button
+        testID="addEntryButton"
+        onPress={() => {}}
+        title="Add Entry"
+        accessibilityLabel="Add an entry to the log."
       />
     </SafeAreaView>
   );
