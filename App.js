@@ -16,7 +16,7 @@ const App = () => {
           component={EntryListScreen}
           options={{ title: 'Entries' }}
         />
-        <Stack.Screen name="Profile" component={AddEntryScreen} />
+        <Stack.Screen name="Add Entry" component={AddEntryScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
