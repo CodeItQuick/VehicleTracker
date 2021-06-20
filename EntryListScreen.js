@@ -34,7 +34,7 @@ export const EntryListScreen = ({ navigation }) => {
         keyExtractor={item => item.id} />
       <Button
         testID="addEntryButton"
-        onPress={() => navigation.navigate('Profile', { name: 'Jane' })}
+        onPress={() => navigation.navigate('Add Entry')}
         title="Add Entry"
         accessibilityLabel="Add an entry to the log." />
     </SafeAreaView>
