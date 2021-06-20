@@ -1,29 +1,23 @@
 import React from 'react';
-import type { Node } from 'react';
 import {
-  SafeAreaView, // FIXME: I think this is iOS specific
+  SafeAreaView,
   FlatList,
   Button,
   Text,
   View,
 } from 'react-native';
 
-//import 'react-native-gesture-handler';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
 const Stack = createStackNavigator();
 
-import {
-  Colors,
-} from 'react-native/Libraries/NewAppScreen';
-
 const EMPTY_DATA = [];
 
 const EntryListScreen = ({ navigation }) => {
   const renderItem = ({ item }) => (
-    <View style={styles.item}>
-      <Text style={styles.title}>{title}</Text>
+    <View>
+      <Text>{title}</Text>
     </View>
   );
 
@@ -58,7 +52,7 @@ const AddEntryScreen = ({ navigation }) => {
   return <Text>This is the add entry screen</Text>;
 };
 
-const App: () => Node = () => {
+const App = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator>
