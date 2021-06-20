@@ -1,12 +1,12 @@
 import React from 'react';
 import {
   Button, TextInput,
-  View
+  SafeAreaView
 } from 'react-native';
 
 export const AddEntryScreen = ({ navigation }) => {
   return (
-    <View testID="addEntryForm">
+    <SafeAreaView testID="addEntryForm">
       <TextInput
         testID="dateInput"
         label="Date"
@@ -31,6 +31,6 @@ export const AddEntryScreen = ({ navigation }) => {
         onPress={() => navigation.goBack()}
         title="Save"
         accessibilityLabel="Save this entry to the log." />
-    </View>
+    </SafeAreaView>
   );
 };
