@@ -4,14 +4,16 @@ import {
   TextInput,
   SafeAreaView
 } from 'react-native';
+import DatePicker from 'react-native-date-picker';
 
 export const AddEntryScreen = ({ navigation }) => {
   return (
     <SafeAreaView testID="addEntryForm">
-      <TextInput
+      <DatePicker
         testID="dateInput"
         label="Date"
-        autoCapitalize="none" />
+        mode="datetime"
+        date={new Date()} />
       <TextInput
         testID="odometerInput"
         label="Odometer"
