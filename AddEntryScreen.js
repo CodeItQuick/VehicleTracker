@@ -1,6 +1,7 @@
 import React from 'react';
 import {
-  Button, TextInput,
+  Button,
+  TextInput,
   SafeAreaView
 } from 'react-native';
 
