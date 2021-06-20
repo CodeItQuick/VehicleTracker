@@ -15,18 +15,22 @@ export const AddEntryScreen = ({ navigation }) => {
       <TextInput
         testID="odometerInput"
         label="Odometer"
+        keyboardType="decimal-pad"
         autoCapitalize="none" />
       <TextInput
         testID="fuelAmountInput"
         label="Fuel Amount(L)"
+        keyboardType="decimal-pad"
         autoCapitalize="none" />
       <TextInput
         testID="fuelPriceInput"
         label="Fuel Price (per L)"
+        keyboardType="decimal-pad"
         autoCapitalize="none" />
       <TextInput
         testID="totalPriceInput"
         label="Total Price"
+        keyboardType="decimal-pad"
         autoCapitalize="none" />
       <Button
         onPress={() => navigation.goBack()}
