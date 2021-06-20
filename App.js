@@ -1,22 +1,18 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow strict-local
- */
-
 import React from 'react';
 import type { Node } from 'react';
 import {
   SafeAreaView, // FIXME: I think this is iOS specific
   FlatList,
   Button,
-  StyleSheet,
   Text,
-  useColorScheme,
   View,
 } from 'react-native';
+
+//import 'react-native-gesture-handler';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+
+const Stack = createStackNavigator();
 
 import {
   Colors,
@@ -24,7 +20,7 @@ import {
 
 const EMPTY_DATA = [];
 
-const App: () => Node = () => {
+const EntryListScreen = ({ navigation }) => {
   const renderItem = ({ item }) => (
     <View style={styles.item}>
       <Text style={styles.title}>{title}</Text>
@@ -39,14 +35,8 @@ const App: () => Node = () => {
     )
   }
 
-  const isDarkMode = useColorScheme() === 'dark';
-
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
-
   return (
-    <SafeAreaView style={backgroundStyle}>
+    <SafeAreaView>
       <FlatList
         testID="entriesList"
         data={EMPTY_DATA}
@@ -56,7 +46,7 @@ const App: () => Node = () => {
       />
       <Button
         testID="addEntryButton"
-        onPress={() => {}}
+        onPress={() => navigation.navigate('Profile', { name: 'Jane' })}
         title="Add Entry"
         accessibilityLabel="Add an entry to the log."
       />
@@ -64,23 +54,23 @@ const App: () => Node = () => {
   );
 };
 
-const styles = StyleSheet.create({
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-  },
-  highlight: {
-    fontWeight: '700',
-  },
-});
+const AddEntryScreen = ({ navigation }) => {
+  return <Text>This is the add entry screen</Text>;
+};
+
+const App: () => Node = () => {
+  return (
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen
+          name="Entries"
+          component={EntryListScreen}
+          options={{ title: 'Entries' }}
+        />
+        <Stack.Screen name="Profile" component={AddEntryScreen} />
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
+};
 
 export default App;
