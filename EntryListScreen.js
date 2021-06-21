@@ -45,7 +45,10 @@ export const EntryListScreen = ({ navigation }) => {
   };
 
   return (
-    <SafeAreaView>
+    <SafeAreaView
+      style={{
+        margin: 10,
+      }}>
       <FlatList
         testID="entriesList"
         data={emptyData}
