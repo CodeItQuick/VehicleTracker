@@ -9,6 +9,7 @@ import LinearGradient from 'react-native-linear-gradient';
 export const AppButton = (props) => {
   return (
     <Pressable
+      testID={props.testID}
       onPress={props.onPress}
       accessibilityLabel={props.accessibilityLabel}>
       <LinearGradient
