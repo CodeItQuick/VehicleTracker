@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import {
-  Button,
   TextInput,
   SafeAreaView,
   Text,
-  Pressable
+  Pressable,
+  View,
+  StyleSheet,
 } from 'react-native';
 import DatePicker from 'react-native-date-picker';
+import LinearGradient from 'react-native-linear-gradient';
 
 const currentDate = new Date();
 
@@ -28,11 +30,21 @@ export const AddEntryScreen = ({ navigation }) => {
   const currentDate = new Date();
 
   return (
-    <SafeAreaView testID="addEntryForm">
-      <Pressable onPress={toggleDatePickerVisibility}>
-        <Text testID="dateLabel">Date</Text>
-        <Text testID="dateText">{date.toISOString()}</Text>
+    <SafeAreaView
+      testID="addEntryForm"
+      style={{
+        margin: 10,
+      }}>
+
+      <Pressable style={styles.row} onPress={toggleDatePickerVisibility}>
+        <Text style={styles.label}>Date</Text>
+        <TextInput
+          testID="dateText"
+          style={styles.input}
+          value={date.toLocaleDateString()}
+          editable={false} />
       </Pressable>
+
       {isDatePickerVisible ?
         <DatePicker
           testID="dateInput"
@@ -42,48 +54,103 @@ export const AddEntryScreen = ({ navigation }) => {
           onDateChange={setDate} />
         : null}
 
-      <Text>Odometer</Text>
-      <TextInput
-        testID="odometerInput"
-        label="Odometer"
-        keyboardType="decimal-pad"
-        value={odometer.toString()}
-        onChangeText={setOdometer} />
+      <View style={styles.row}>
+        <Text style={styles.label}>Odometer</Text>
+        <TextInput
+          testID="odometerInput"
+          style={styles.input}
+          label="Odometer"
+          keyboardType="decimal-pad"
+          value={odometer.toString()}
+          onChangeText={setOdometer}
+        />
+      </View>
 
-      <Text>Amount</Text>
-      <TextInput
-        testID="fuelAmountInput"
-        label="Fuel Amount"
-        keyboardType="decimal-pad"
-        value={amount.toString()}
-        onChangeText={(amount) => {
-          setAmount(amount);
-          recalculateTotalPrice();
-        }} />
+      <View style={styles.row}>
+        <Text style={styles.label}>Amount</Text>
+        <TextInput
+          testID="fuelAmountInput"
+          style={styles.input}
+          label="Fuel Amount"
+          keyboardType="decimal-pad"
+          value={amount.toString()}
+          onChangeText={(amount) => {
+            setAmount(amount);
+            recalculateTotalPrice();
+          }}
+        />
+      </View>
 
-      <Text>Price</Text>
-      <TextInput
-        testID="fuelPriceInput"
-        label="Fuel Price (per L)"
-        keyboardType="decimal-pad"
-        value={price.toString()}
-        onChangeText={(price) => {
-          setPrice(price);
-          recalculateTotalPrice();
-        }} />
+      <View style={styles.row}>
+        <Text style={styles.label}>Price</Text>
+        <TextInput
+          testID="fuelPriceInput"
+          style={styles.input}
+          label="Fuel Price (per L)"
+          keyboardType="decimal-pad"
+          value={price.toString()}
+          onChangeText={(price) => {
+            setPrice(price);
+            recalculateTotalPrice();
+          }} />
+      </View>
 
-      <Text>Total</Text>
-      <TextInput
-        testID="totalPriceInput"
-        label="Total Price"
-        keyboardType="decimal-pad"
-        value={total.toString()}
-        editable={false} />
+      <View style={styles.row}>
+        <Text style={styles.label}>Total</Text>
+        <TextInput
+          testID="totalPriceInput"
+          style={styles.input}
+          label="Total Price"
+          keyboardType="decimal-pad"
+          value={total.toString()}
+          editable={false} />
+      </View>
 
-      <Button
+      <Pressable
         onPress={() => navigation.goBack()}
-        title="Save"
-        accessibilityLabel="Save this entry to the log." />
-    </SafeAreaView>
+        accessibilityLabel="Save this entry to the log.">
+        <LinearGradient
+          colors={['#35b6d6', '#358bd6', '#075396']}
+          style={styles.buttonGradient}>
+          <Text style={styles.buttonText}>Save</Text>
+        </LinearGradient>
+      </Pressable>
+    </SafeAreaView >
   );
 };
+
+const styles = StyleSheet.create({
+  row: {
+    flexDirection: "row",
+    padding: 8,
+  },
+  label: {
+    flex: 2,
+    padding: 2,
+    margin: 2,
+    fontSize: 24,
+    fontWeight: "bold",
+  },
+  input: {
+    flex: 3,
+    padding: 5,
+    borderWidth: 1,
+    borderRadius: 4,
+    fontSize: 24,
+    fontFamily: "courier",
+    textAlign: "right",
+  },
+  buttonGradient: {
+    paddingLeft: 15,
+    paddingRight: 15,
+    borderRadius: 5
+  },
+  buttonText: {
+    fontSize: 24,
+    fontWeight: "bold",
+    textAlign: "center",
+    margin: 10,
+    color: "#ffffff",
+    backgroundColor: "transparent",
+  },
+});
