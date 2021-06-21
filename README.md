@@ -2,6 +2,7 @@
 
 VehicleTracker is a mobile application for tracking details about your
 vehicles.
+
 ## Development
 
 VehicleTracker is a ReactNative application.
@@ -18,6 +19,18 @@ Next, start the react-native app:
 Finally, run the app:
 
     yarn react-native run-ios
+
+### Running the Tests
+
+The e2e tests are written using [Detox](https://github.com/wix/Detox).
+
+To run them, you first need to build for testing:
+
+    detox build --configuration=ios
+
+Then run them:
+
+    detox test --configuration=ios
 
 ## License
 
