@@ -3,6 +3,10 @@
 VehicleTracker is a mobile application for tracking details about your
 vehicles.
 
+Theoretically, it should run on both iOS and Android, but it's currently only
+tested on iOS.  If you try to run it on Android and it doesn't work, please
+feel free to fix that.
+
 ## Development
 
 VehicleTracker is a ReactNative application.
