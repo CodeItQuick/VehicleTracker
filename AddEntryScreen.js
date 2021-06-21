@@ -8,7 +8,7 @@ import {
   StyleSheet,
 } from 'react-native';
 import DatePicker from 'react-native-date-picker';
-import LinearGradient from 'react-native-linear-gradient';
+import { AppButton } from './AppButton';
 
 const currentDate = new Date();
 
@@ -106,15 +106,11 @@ export const AddEntryScreen = ({ navigation }) => {
           editable={false} />
       </View>
 
-      <Pressable
-        onPress={() => navigation.goBack()}
-        accessibilityLabel="Save this entry to the log.">
-        <LinearGradient
-          colors={['#35b6d6', '#358bd6', '#075396']}
-          style={styles.buttonGradient}>
-          <Text style={styles.buttonText}>Save</Text>
-        </LinearGradient>
-      </Pressable>
+      <AppButton
+        testID="saveEntryButton"
+        title="Save"
+        accessibilityLabel="Save this entry to the log."
+        onPress={() => navigation.goBack()} />
     </SafeAreaView >
   );
 };
@@ -139,18 +135,5 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontFamily: "courier",
     textAlign: "right",
-  },
-  buttonGradient: {
-    paddingLeft: 15,
-    paddingRight: 15,
-    borderRadius: 5
-  },
-  buttonText: {
-    fontSize: 24,
-    fontWeight: "bold",
-    textAlign: "center",
-    margin: 10,
-    color: "#ffffff",
-    backgroundColor: "transparent",
   },
 });
