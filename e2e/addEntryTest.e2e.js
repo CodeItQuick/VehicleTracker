@@ -11,19 +11,34 @@ describe('Add an Entry', () => {
     await expect(element(by.id('addEntryButton'))).toBeVisible();
   });
 
-  it('returns to the entrylist screen after saving an entry', async () => {
+  it('updates the total price', async () => {
     await element(by.id('addEntryButton')).tap();
 
-    await expect(element(by.id('addEntryForm'))).toBeVisible();
+    await element(by.id('fuelAmountInput')).replaceText('75.24');
+    await element(by.id('fuelPriceInput')).replaceText('15.74');
 
-    await element(by.id('dateInput')).typeText('2020-06-18');
-    await element(by.id('odometerInput')).typeText('123455');
-    await element(by.id('fuelAmountInput')).typeText('75,24');
-    await element(by.id('fuelPriceInput')).typeText('15,75');
-    await element(by.id('totalPriceInput')).typeText('1185,19');
+    await expect(element(by.id('totalPriceInput'))).toHaveValue('1184.28');
 
-    await element(by.text('Save')).tap();
+    await element(by.id('fuelAmountInput')).replaceText('36.51');
 
-    await expect(element(by.id('entriesList'))).toBeVisible();
+    await expect(element(by.id('totalPriceInput'))).toHaveValue('574.67');
+
+    await element(by.id('fuelPriceInput')).replaceText('16.39');
+
+    await expect(element(by.id('totalPriceInput'))).toHaveValue('598.40');
+  });
+
+  it('shows and hides the date picker when tapping on the date', async () => {
+    await element(by.id('addEntryButton')).tap();
+
+    await expect(element(by.id('dateInput'))).toBeNotVisible();
+
+    await element(by.id('dateText')).tap();
+
+    await expect(element(by.id('dateInput'))).toBeVisible();
+
+    await element(by.id('dateText')).tap();
+
+    await expect(element(by.id('dateInput'))).toBeNotVisible();
   });
 });
