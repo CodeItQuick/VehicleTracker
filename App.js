@@ -34,7 +34,9 @@ const App = () => {
           name="Entries"
           component={EntryListScreen}
         />
-        <Stack.Screen name="Add Entry" component={AddEntryScreen} />
+        <Stack.Screen
+          name="Add Entry"
+          component={AddEntryScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
