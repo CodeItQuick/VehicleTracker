@@ -33,7 +33,6 @@ const App = () => {
         <Stack.Screen
           name="Entries"
           component={EntryListScreen}
-          options={{ title: 'Entries' }}
         />
         <Stack.Screen name="Add Entry" component={AddEntryScreen} />
       </Stack.Navigator>
