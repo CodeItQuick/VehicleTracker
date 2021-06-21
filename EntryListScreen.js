@@ -6,6 +6,7 @@ import {
   Text,
   View
 } from 'react-native';
+import { AppButton } from './AppButton';
 
 export const EntryListScreen = ({ navigation }) => {
   const emptyData = [];
@@ -32,7 +33,7 @@ export const EntryListScreen = ({ navigation }) => {
         ListEmptyComponent={listEmptyComponent}
         renderItem={renderItem}
         keyExtractor={item => item.id} />
-      <Button
+      <AppButton
         testID="addEntryButton"
         onPress={() => navigation.navigate('Add Entry')}
         title="Add Entry"
