@@ -38,11 +38,12 @@ export const AddEntryScreen = ({ navigation }) => {
 
       <Pressable style={styles.row} onPress={toggleDatePickerVisibility}>
         <Text style={styles.label}>Date</Text>
-        <TextInput
+        <Text
           testID="dateText"
           style={styles.input}
-          value={date.toLocaleDateString()}
-          editable={false} />
+          editable={false}>
+          {date.toLocaleDateString()}
+        </Text>
       </Pressable>
 
       {isDatePickerVisible ?
