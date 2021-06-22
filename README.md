@@ -18,11 +18,11 @@ First, install the dependencies:
 
 Next, start the react-native app:
 
-    yarn react-native start
+    yarn start
 
 Finally, run the app:
 
-    yarn react-native run-ios
+    yarn ios
 
 ### Running the Tests
 
