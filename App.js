@@ -16,7 +16,7 @@
 // You should have received a copy of the GNU General Public License
 // along with VehicleTracker.  If not, see <https://www.gnu.org/licenses/>.
 //
-
+import 'react-native-gesture-handler'
 import React from 'react';
 
 import {NavigationContainer} from '@react-navigation/native';
