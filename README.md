@@ -4,7 +4,7 @@ VehicleTracker is a mobile application for tracking details about your
 vehicles.
 
 Theoretically, it should run on both iOS and Android, but it's currently only
-tested on iOS.  If you try to run it on Android and it doesn't work, please
+tested on iOS. If you try to run it on Android and it doesn't work, please
 feel free to fix that.
 
 ## Development
@@ -39,7 +39,7 @@ Then run them:
 ## License
 
 VehicleTracker is a mobile app for tracking details about your vehicles.
-Copyright (C) 2021  Steven R. Baker <steven@stevenrbaker.com>
+Copyright (C) 2021 Steven R. Baker <steven@stevenrbaker.com>
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU Affero General Public License as
@@ -48,8 +48,8 @@ License, or (at your option) any later version.
 
 This program is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 GNU Affero General Public License for more details.
 
 You should have received a copy of the GNU Affero General Public License
-along with this program.  If not, see <https://www.gnu.org/licenses/>.
+along with this program. If not, see <https://www.gnu.org/licenses/>.

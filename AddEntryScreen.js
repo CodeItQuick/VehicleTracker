@@ -17,7 +17,7 @@
 // along with VehicleTracker.  If not, see <https://www.gnu.org/licenses/>.
 //
 
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import {
   TextInput,
   SafeAreaView,
@@ -27,11 +27,11 @@ import {
   StyleSheet,
 } from 'react-native';
 import DatePicker from 'react-native-date-picker';
-import { AppButton } from './AppButton';
+import {AppButton} from './AppButton';
 
 const currentDate = new Date();
 
-export const AddEntryScreen = ({ navigation }) => {
+export const AddEntryScreen = ({navigation}) => {
   const [isDatePickerVisible, setIsDatePickerVisible] = useState(false);
   const [date, setDate] = useState(new Date());
   const [odometer, setOdometer] = useState(new Number());
@@ -54,25 +54,22 @@ export const AddEntryScreen = ({ navigation }) => {
       style={{
         margin: 10,
       }}>
-
       <Pressable style={styles.row} onPress={toggleDatePickerVisibility}>
         <Text style={styles.label}>Date</Text>
-        <Text
-          testID="dateText"
-          style={styles.input}
-          editable={false}>
+        <Text testID="dateText" style={styles.input} editable={false}>
           {date.toLocaleDateString()}
         </Text>
       </Pressable>
 
-      {isDatePickerVisible ?
+      {isDatePickerVisible ? (
         <DatePicker
           testID="dateInput"
           label="Date"
           mode="date"
           date={date}
-          onDateChange={setDate} />
-        : null}
+          onDateChange={setDate}
+        />
+      ) : null}
 
       <View style={styles.row}>
         <Text style={styles.label}>Odometer</Text>
@@ -94,7 +91,7 @@ export const AddEntryScreen = ({ navigation }) => {
           label="Fuel Amount"
           keyboardType="decimal-pad"
           value={amount.toString()}
-          onChangeText={(amount) => {
+          onChangeText={amount => {
             setAmount(amount);
             recalculateTotalPrice();
           }}
@@ -109,10 +106,11 @@ export const AddEntryScreen = ({ navigation }) => {
           label="Fuel Price (per L)"
           keyboardType="decimal-pad"
           value={price.toString()}
-          onChangeText={(price) => {
+          onChangeText={price => {
             setPrice(price);
             recalculateTotalPrice();
-          }} />
+          }}
+        />
       </View>
 
       <View style={styles.row}>
@@ -123,21 +121,23 @@ export const AddEntryScreen = ({ navigation }) => {
           label="Total Price"
           keyboardType="decimal-pad"
           value={total.toString()}
-          editable={false} />
+          editable={false}
+        />
       </View>
 
       <AppButton
         testID="saveEntryButton"
         title="Save"
         accessibilityLabel="Save this entry to the log."
-        onPress={() => navigation.goBack()} />
-    </SafeAreaView >
+        onPress={() => navigation.goBack()}
+      />
+    </SafeAreaView>
   );
 };
 
 const styles = StyleSheet.create({
   row: {
-    flexDirection: "row",
+    flexDirection: 'row',
     padding: 8,
   },
   label: {
@@ -145,7 +145,7 @@ const styles = StyleSheet.create({
     padding: 2,
     margin: 2,
     fontSize: 24,
-    fontWeight: "bold",
+    fontWeight: 'bold',
   },
   input: {
     flex: 3,
@@ -153,7 +153,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderRadius: 4,
     fontSize: 24,
-    fontFamily: "courier",
-    textAlign: "right",
+    fontFamily: 'courier',
+    textAlign: 'right',
   },
 });
