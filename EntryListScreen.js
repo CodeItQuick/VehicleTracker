@@ -18,7 +18,7 @@
 //
 
 import React from 'react';
-import {SafeAreaView, FlatList, Button, Text, View} from 'react-native';
+import {SafeAreaView, FlatList, Text, View, StyleSheet} from 'react-native';
 import {AppButton} from './AppButton';
 
 export const EntryListScreen = ({navigation}) => {
@@ -26,7 +26,7 @@ export const EntryListScreen = ({navigation}) => {
 
   const renderItem = ({item}) => (
     <View>
-      <Text>{title}</Text>
+      <Text>{item}</Text>
     </View>
   );
 
@@ -39,10 +39,7 @@ export const EntryListScreen = ({navigation}) => {
   };
 
   return (
-    <SafeAreaView
-      style={{
-        margin: 10,
-      }}>
+    <SafeAreaView style={styles.screen}>
       <FlatList
         testID="entriesList"
         data={emptyData}
@@ -59,3 +56,9 @@ export const EntryListScreen = ({navigation}) => {
     </SafeAreaView>
   );
 };
+
+const styles = StyleSheet.create({
+  screen: {
+    margin: 10,
+  },
+});

@@ -17,7 +17,7 @@
 // along with VehicleTracker.  If not, see <https://www.gnu.org/licenses/>.
 //
 
-import React, {useState} from 'react';
+import {React, useState} from 'react';
 import {
   TextInput,
   SafeAreaView,
@@ -29,15 +29,13 @@ import {
 import DatePicker from 'react-native-date-picker';
 import {AppButton} from './AppButton';
 
-const currentDate = new Date();
-
 export const AddEntryScreen = ({navigation}) => {
   const [isDatePickerVisible, setIsDatePickerVisible] = useState(false);
   const [date, setDate] = useState(new Date());
-  const [odometer, setOdometer] = useState(new Number());
-  const [amount, setAmount] = useState(new Number());
-  const [price, setPrice] = useState(new Number());
-  const [total, setTotal] = useState(new Number());
+  const [odometer, setOdometer] = useState(0);
+  const [amount, setAmount] = useState(0);
+  const [price, setPrice] = useState(0);
+  const [total, setTotal] = useState(0);
 
   const recalculateTotalPrice = () => {
     setTotal((amount * price).toFixed(2));
@@ -46,14 +44,9 @@ export const AddEntryScreen = ({navigation}) => {
   const toggleDatePickerVisibility = () => {
     setIsDatePickerVisible(!isDatePickerVisible);
   };
-  const currentDate = new Date();
 
   return (
-    <SafeAreaView
-      testID="addEntryForm"
-      style={{
-        margin: 10,
-      }}>
+    <SafeAreaView testID="addEntryForm" style={styles.screen}>
       <Pressable style={styles.row} onPress={toggleDatePickerVisibility}>
         <Text style={styles.label}>Date</Text>
         <Text testID="dateText" style={styles.input} editable={false}>
@@ -91,8 +84,8 @@ export const AddEntryScreen = ({navigation}) => {
           label="Fuel Amount"
           keyboardType="decimal-pad"
           value={amount.toString()}
-          onChangeText={amount => {
-            setAmount(amount);
+          onChangeText={changedAmount => {
+            setAmount(changedAmount);
             recalculateTotalPrice();
           }}
         />
@@ -106,8 +99,8 @@ export const AddEntryScreen = ({navigation}) => {
           label="Fuel Price (per L)"
           keyboardType="decimal-pad"
           value={price.toString()}
-          onChangeText={price => {
-            setPrice(price);
+          onChangeText={changedPrice => {
+            setPrice(changedPrice);
             recalculateTotalPrice();
           }}
         />
@@ -136,6 +129,9 @@ export const AddEntryScreen = ({navigation}) => {
 };
 
 const styles = StyleSheet.create({
+  screen: {
+    margin: 10,
+  },
   row: {
     flexDirection: 'row',
     padding: 8,
