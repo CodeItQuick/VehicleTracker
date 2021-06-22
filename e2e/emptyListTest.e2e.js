@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 describe('Empty List', () => {
   beforeAll(async () => {
     await device.launchApp();

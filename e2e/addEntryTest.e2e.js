@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 describe('Add an Entry', () => {
   beforeAll(async () => {
     await device.launchApp();
